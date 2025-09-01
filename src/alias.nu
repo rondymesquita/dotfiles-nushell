@@ -6,3 +6,7 @@ export alias cat = open
 export def hello_world [] {
 		print "Hello, World!"
 }
+
+export def reload [] {
+	# source $"($nu.default-config-dir)/config.nu"
+}

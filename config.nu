@@ -17,8 +17,8 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-source ./src/constants.nu
-source ./src/variables.nu
+source ./src/_constants.nu
+source ./src/_variables.nu
 
 use ./src/setup.nu
 setup execute
@@ -27,6 +27,7 @@ source ./src/env.nu
 source ./src/credentials.nu
 source ./src/alias.nu
 source ./src/prompt.nu
+source ./src/keybindings.nu
 
 cd $nu.default-config-dir
 # cd ~/Documents/dev/projects/icicle/on-prem-manager

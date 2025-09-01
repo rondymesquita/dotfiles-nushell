@@ -1,5 +1,5 @@
+use ./_variables.nu *
 use ./functions.nu
-use ./variables.nu *
 
 # Setup script to initialize necessary files and directories
 export def execute [] {
