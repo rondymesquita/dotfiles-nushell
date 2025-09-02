@@ -17,17 +17,9 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-source ./src/_constants.nu
-source ./src/_variables.nu
+source ./config/index.nu
+# source ./modules/amy/index.nu
 
-use ./src/setup.nu
-setup execute
-
-source ./src/env.nu
-source ./src/credentials.nu
-source ./src/alias.nu
-source ./src/prompt.nu
-source ./src/keybindings.nu
-
+use ./modules/amy
+amy init
 cd $nu.default-config-dir
-# cd ~/Documents/dev/projects/icicle/on-prem-manager
