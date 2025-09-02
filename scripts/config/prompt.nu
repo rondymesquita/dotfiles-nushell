@@ -1,4 +1,4 @@
-use ./git/git.nu
+use ./utils/git.nu
 
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 $env.PROMPT_INDICATOR = {|| create_prompt_indicator }
