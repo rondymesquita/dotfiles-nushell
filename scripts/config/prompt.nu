@@ -1,10 +1,11 @@
 use ./utils/git.nu
+use ./utils/colors.nu
 
 $env.PROMPT_COMMAND = {|| create_prompt }
 $env.PROMPT_INDICATOR = {|| create_prompt_indicator }
 $env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
 
-export def parse_format [format: string] {
+def parse_format [format: string] {
 
     mut prompt = $format
 
@@ -21,37 +22,37 @@ export def parse_format [format: string] {
     print $prompt
 }
 
-export def get_git_branch [] {
+def get_git_branch [] {
     mut prompt = ""
     let current_branch = git get_current_branch
 
     if ($current_branch != "" and not ($current_branch | str contains "fatal")) {
-        $prompt = $"(ansi white) on (ansi purple)($current_branch)(ansi reset)"
+        $prompt = $"(ansi white) on (ansi $colors.base0e)($current_branch)(ansi reset)"
     }
     return $prompt
 }
 
-export def get_indicator [] {
+def get_indicator [] {
     let indicator = "❯"
-    mut prompt = $"(ansi green)($indicator)(ansi reset)"
+    mut prompt = $"(ansi $colors.base0b)($indicator)(ansi reset)"
     if ($env.LAST_EXIT_CODE != 0) {
-        $prompt = $"(ansi red)[($env.LAST_EXIT_CODE)] ($indicator)(ansi reset)"
+        $prompt = $"(ansi $colors.base08)[($env.LAST_EXIT_CODE)] ($indicator)(ansi reset)"
     }
     return $prompt
 }
 
-export def get_pwd [] {
+def get_pwd [] {
     let path_str = ($env.PWD | path basename)
-    let cwd = $"(ansi green)($path_str)(ansi reset)"
+    let cwd = $"(ansi $colors.base0c)($path_str)(ansi reset)"
     return $cwd
 }
 
-export def create_prompt [] {
-    let prompt = parse_format "{cwd}{indicator}"
+def create_prompt [] {
+    let prompt = parse_format "{cwd} {indicator}"
     return $prompt
 }
 
-export def create_prompt_indicator [] {
+def create_prompt_indicator [] {
 }
-export def create_right_prompt [] {
+def create_right_prompt [] {
 }

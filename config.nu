@@ -1,9 +1,5 @@
 use ./scripts/util.nu
 
-# Create needed files
-util safe-create $"($util.ROOT)/scripts/credentials.nu"
-source ./scripts/credentials.nu
-
 # Init
 source ./scripts/config/init.nu
 
