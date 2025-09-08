@@ -1,6 +1,6 @@
 use ./scripts/util.nu
 
-# Init
+# Load configurations
 source ./scripts/config/init.nu
 
 # Load modules
