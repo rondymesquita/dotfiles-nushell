@@ -1,6 +1,6 @@
 # Meu modulo
 
-use ../../util.nu
+use ../../util/config.nu
 
 export const amy = {
   version: "0.0.1"
@@ -8,17 +8,33 @@ export const amy = {
 
 const OUTPUT_FOLDER = "resources"
 const OUTPUT_FILE = "resources.json"
-let OS = $env.OS
+const OS = $nu.os-info.name
 
-export def amy [f: string] {
+export def amy [subcommand: string] {
     help amy
 }
 
-def addFile [path: string] {
+# Add file to tracking resources
+@example add ./file.ext
+@example add ./folder
+export def "amy add" [path: string] {
+
+    if (not ($path | path exists)) {
+        error make {msg: $"($path) was not found"}
+    }
+
+    if (($path | path type) == "file") {
+
+    } else if (($path | path type) == "dir") {
+
+    } else {
+        error make {msg: $"($path) of kind ($path | path type) cannot be handled"}
+    }
+
     let name = $path | path basename
     let meta = $path | path expand | path parse
     let sourceFolder = $meta.parent | str replace $"($meta.prefix)" ""
-    let destinationFolder = $"($util.ROOT)/($OUTPUT_FOLDER)/($OS)/($sourceFolder)"
+    let destinationFolder = $"($config.ROOT)/($OUTPUT_FOLDER)/($OS)/($sourceFolder)"
     let id = $"($sourceFolder)-($name)"
     let record = {
         id: $id
@@ -30,24 +46,7 @@ def addFile [path: string] {
 
     mkdir $destinationFolder
     cp --recursive $"($sourceFolder)/($name)" $"($destinationFolder)"
-}
 
-# imprime cor
-export def "amy add" [path: string] {
-
-    if (not ($path | path exists)) {
-        error make {msg: $"($path) was not found"}
-    }
-
-    if (($path | path type) == "file") {
-        addFile $path
-    } else if (($path | path type) == "dir") {
-        addFile $path
-    } else {
-        error make {msg: $"($path) of kind ($path | path type) cannot be handled"}
-    }
-
-    # cp $record.source $record.dest
 }
 
 # imprime modo

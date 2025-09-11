@@ -1,10 +1,9 @@
-use ./scripts/util.nu
-
 # Load configurations
-source ./scripts/config/init.nu
+source ./scripts/core/init.nu
 
 # Load commands
-source ./scripts/commands/amy/init.nu
-source ./scripts/commands/git/init.nu
+source ./scripts/commands/amy/amy.nu
+source ./scripts/commands/git/git.nu
+source ./scripts/commands/box/box.nu
 
 cd $nu.default-config-dir
