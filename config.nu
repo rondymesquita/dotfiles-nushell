@@ -1,9 +1,11 @@
 # Load configurations
-source ./scripts/core/init.nu
+source ./core/init.nu
 
 # Load commands
-source ./scripts/commands/amy/amy.nu
-source ./scripts/commands/git/git.nu
-source ./scripts/commands/box/box.nu
+source ./cmd/amy/amy.nu
+source ./cmd/git/git.nu
+source ./cmd/box/box.nu
+
+# source ./overlay.nu
 
 cd $nu.default-config-dir
