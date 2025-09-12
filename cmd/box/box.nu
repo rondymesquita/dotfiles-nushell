@@ -27,8 +27,10 @@ export def "box install" [...apps: string] {
   print $apps
 
   for $app in $apps {
+    print $"Installing ($app)"
     match $app {
       "python" => { sheldon install python }
+      "git" => { sheldon install git }
       _ => { box help }
     }
   }
