@@ -1,77 +1,19 @@
-# $env.config.color_config = {
-#   list: default,
-#   shape_flag: blue_bold,
-#   shape_table: blue_bold,
-#   shape_record: cyan_bold,
-#   shape_range: yellow_bold,
-#   separator: default,
-#   shape_garbage: {
-#     fg: default,
-#     bg: red,
-#     attr: b
-#   },
-#   block: default,
-#   shape_directory: cyan,
-#   bool: light_cyan,
-#   int: default,
-#   shape_string_interpolation: cyan_bold,
-#   shape_externalarg: green_bold,
-#   shape_bool: light_cyan,
-#   shape_int: purple_bold,
-#   shape_filepath: cyan,
-#   shape_float: purple_bold,
-#   duration: default,
-#   shape_internalcall: cyan_bold,
-#   row_index: green_bold,
-#   shape_string: green,
-#   float: default,
-#   shape_redirection: purple_bold,
-#   record: default,
-#   datetime: purple,
-#   shape_external_resolved: light_yellow_bold,
-#   search_result: {
-#     bg: red,
-#     fg: default
-#   },
-#   shape_raw_string: light_purple,
-#   filesize: cyan,
-#   leading_trailing_space_bg: {
-#     attr: n
-#   },
-#   string: default,
-#   shape_match_pattern: green,
-#   glob: cyan_bold,
-#   shape_signature: green_bold,
-#   shape_nothing: light_cyan,
-#   range: default,
-#   header: green_bold,
-#   shape_datetime: cyan_bold,
-#   shape_pipe: purple_bold,
-#   shape_glob_interpolation: cyan_bold,
-#   nothing: default,
-#   shape_binary: purple_bold,
-#   hints: dark_gray,
-#   binary: default,
-#   cell-path: default,
-#   shape_globpattern: cyan_bold,
-#   shape_block: blue_bold,
-#   shape_closure: green_bold,
-#   shape_external: cyan,
-#   shape_literal: blue,
-#   shape_operator: yellow,
-#   empty: blue,
-#   shape_variable: purple,
-#   shape_vardecl: purple,
-#   shape_keyword: cyan_bold,
-#   shape_list: cyan_bold,
-#   shape_custom: green,
-#   closure: green_bold,
-#   shape_matching_brackets: {
-#     attr: u
-#   }
-# }
-
-# let's define some colors
+export const base00 = "#181818" # Default Background
+export const base01 = "#282828" # Lighter Background (Used for status bars, line number and folding marks)
+export const base02 = "#383838" # Selection Background
+export const base03 = "#585858" # Comments, Invisibles, Line Highlighting
+export const base04 = "#b8b8b8" # Dark Foreground (Used for status bars)
+export const base05 = "#d8d8d8" # Default Foreground, Caret, Delimiters, Operators
+export const base06 = "#e8e8e8" # Light Foreground (Not often used)
+export const base07 = "#f8f8f8" # Light Background (Not often used)
+export const base08 = "red" # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deexport consted
+export const base09 = "yellow" # Integers, Boolean, Constants, XML Attributes, Markup Link Url
+export const base0a = "yellow" # Classes, Markup Bold, Search Text Background
+export const base0b = "green" # Strings, Inherited Class, Markup Code, Diff Inserted
+export const base0c = "cyan" # Support, Regular Expressions, Escape Characters, Markup Quotes
+export const base0d = "blue" # Functions, Methods, Attribute IDs, Headings
+export const base0e = "purple" # Keywords, Storage, Selector, Markup Italic, Diff Changed
+export const base0f = "magenta" # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
 # export const base00 = "#181818" # Default Background
 # export const base01 = "#282828" # Lighter Background (Used for status bars, line number and folding marks)
@@ -89,23 +31,6 @@
 # export const base0d = "#7cafc2" # Functions, Methods, Attribute IDs, Headings
 # export const base0e = "#ba8baf" # Keywords, Storage, Selector, Markup Italic, Diff Changed
 # export const base0f = "#a16946" # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-
-export const base00 = "#181818" # Default Background
-export const base01 = "#282828" # Lighter Background (Used for status bars, line number and folding marks)
-export const base02 = "#383838" # Selection Background
-export const base03 = "#585858" # Comments, Invisibles, Line Highlighting
-export const base04 = "#b8b8b8" # Dark Foreground (Used for status bars)
-export const base05 = "#d8d8d8" # Default Foreground, Caret, Delimiters, Operators
-export const base06 = "#e8e8e8" # Light Foreground (Not often used)
-export const base07 = "#f8f8f8" # Light Background (Not often used)
-export const base08 = "red" # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deexport consted
-export const base09 = "yellow" # Integers, Boolean, Constants, XML Attributes, Markup Link Url
-export const base0a = "yellow" # Classes, Markup Bold, Search Text Background
-export const base0b = "green" # Strings, Inherited Class, Markup Code, Diff Inserted
-export const base0c = "cyan" # Support, Regular Expressions, Escape Characters, Markup Quotes
-export const base0d = "blue" # Functions, Methods, Attribute IDs, Headings
-export const base0e = "purple" # Keywords, Storage, Selector, Markup Italic, Diff Changed
-export const base0f = "magenta" # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
 
 # l	blink

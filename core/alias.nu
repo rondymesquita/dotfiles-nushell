@@ -1,12 +1,9 @@
-# alias bash = `c:/Program Files/Git/bin/bash`
+use ../util/config.nu [config]
 
 export alias hello = print "Hello!"
 export alias cat = open
+export alias exiy = exit
 
-export def hello_world [] {
-		print "Hello, World!"
-}
-
-export def reload [] {
-	# source $"($nu.default-config-dir)/config.nu"
+export def hello-world [] {
+		print $"Hello ($config.USER)"
 }

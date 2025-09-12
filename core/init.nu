@@ -1,4 +1,3 @@
-source ./_variables.nu
 source ./credentials.nu
 source ./alias.nu
 source ./env.nu
