@@ -4,11 +4,11 @@ use ../../util/config.nu [config]
 use std/log
 
 module windows {
-  export use ./windows/install.nu
+  export use ./windows/windows.nu *
 }
 
 module linux {
-    export use ./linux/install.nu
+    export use ./linux/install.nu *
 }
 
 overlay use $config.OS --prefix as sheldon
@@ -17,22 +17,34 @@ export const box = {
   version: "0.0.1"
 }
 
-# Meu modulo
-export def box [subcommand: string] {
-    help box
+# module
+export def box [cmd: string] {}
+
+export def "box help" [] {
+  help box
 }
 
-# Install apps
-export def "box install" [...apps: string] {
-  print $apps
+export def "box install" [...pkgs: string] {
+  for $pkg in $pkgs {
+    let pkgs = sheldon getPackages
+    let cmd = $pkgs.install | get --optional $pkg
 
-  for $app in $apps {
-    print $"Installing ($app)"
-    match $app {
-      "python" => { sheldon install python }
-      "git" => { sheldon install git }
-      _ => { box help }
+    $cmd | describe
+
+    if ($cmd == null) {
+      error make -u {
+        msg: $"Package '($pkg)' not found."
+        help: "Run 'box list' to see available packages."
+      }
     }
-  }
 
+    print $pkg
+
+    do $cmd
+  }
+}
+
+export def "box list" [] {
+  let pkgs = sheldon getPackages
+  $pkgs.install | columns
 }
