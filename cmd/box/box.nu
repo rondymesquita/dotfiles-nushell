@@ -18,33 +18,41 @@ export const box = {
 }
 
 # module
-export def box [cmd: string] {}
+export def box [] {
+  help box
+}
 
 export def "box help" [] {
   help box
 }
 
-export def "box install" [...pkgs: string] {
-  for $pkg in $pkgs {
-    let pkgs = sheldon getPackages
-    let cmd = $pkgs.install | get --optional $pkg
+# Install package
+export def "box install" [...packageNames: string] {
+
+  if ($packageNames | is-empty) {
+    error make -u {msg: "Inform at least one package name"}
+  }
+
+  for $packageName in $packageNames {
+    let packages = sheldon getPackages
+    let cmd = $packages | get --optional $packageName
 
     $cmd | describe
 
     if ($cmd == null) {
       error make -u {
-        msg: $"Package '($pkg)' not found."
+        msg: $"Package '($packageName)' not found."
         help: "Run 'box list' to see available packages."
       }
     }
 
-    print $pkg
+    print $packageName
 
-    do $cmd
+    do $cmd $packages
   }
 }
 
 export def "box list" [] {
-  let pkgs = sheldon getPackages
-  $pkgs.install | columns
+  let packages = sheldon getPackages
+  $packages | columns
 }
