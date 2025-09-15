@@ -1,32 +1,18 @@
-
-use ../../util/fs.nu [safe-create]
-use ../../util/config.nu [config]
-use std/log
-
-module windows {
-  export use ./windows/windows.nu *
-}
-
-module linux {
-    export use ./linux/install.nu *
-}
-
-overlay use $config.OS --prefix as sheldon
-
 export const box = {
   version: "0.0.1"
 }
 
-# module
+# Main module for using shell and set machine configurations.
 export def box [] {
   help box
 }
 
+# Show help message
 export def "box help" [] {
   help box
 }
 
-# Install package
+# Install packages
 export def "box install" [...packageNames: string] {
 
   if ($packageNames | is-empty) {
@@ -34,7 +20,7 @@ export def "box install" [...packageNames: string] {
   }
 
   for $packageName in $packageNames {
-    let packages = sheldon getPackages
+    let packages = platform getPackages
     let cmd = $packages | get --optional $packageName
 
     $cmd | describe
@@ -52,7 +38,13 @@ export def "box install" [...packageNames: string] {
   }
 }
 
+# List packages available for installation
 export def "box list" [] {
-  let packages = sheldon getPackages
+  let packages = platform getPackages
   $packages | columns
+}
+
+# Enter in sudo mode
+export def "box sudo" [] {
+	platform sudo
 }

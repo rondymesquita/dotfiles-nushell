@@ -1,4 +1,4 @@
-use ../util/config.nu [config]
+use ../util/variables.nu [config]
 
 export alias hello = print "Hello!"
 export alias cat = open

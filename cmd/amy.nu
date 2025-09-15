@@ -1,6 +1,6 @@
 # Meu modulo
 
-use ../../util/config.nu
+use ../util/variables.nu [config]
 
 export const amy = {
   version: "0.0.1"

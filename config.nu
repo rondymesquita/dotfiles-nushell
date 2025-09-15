@@ -1,12 +1,12 @@
 # Load configurations
-source ./util/config.nu
+source ./util/variables.nu
 
 # Load core
 source ./core/init.nu
 
 # Load commands
-source ./cmd/amy/amy.nu
-source ./cmd/git/git.nu
-source ./cmd/box/box.nu
+source ./cmd/amy.nu
+source ./cmd/git.nu
+source ./cmd/box.nu
 
 cd $nu.default-config-dir

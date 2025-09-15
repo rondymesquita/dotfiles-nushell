@@ -4,5 +4,5 @@ export const config = {
 	USER: "rondy"
 	NODE_VERSION: "22.19.0",
 	DOWNLOADS: "./downloads",
-	RESOURCES: "./out",
+	RESOURCES: "./resources",
 }

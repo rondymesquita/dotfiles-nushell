@@ -20,7 +20,7 @@ export def getPackages [] {
       powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
     },
     node: { ||
-      choco install nodejs-lts --version=$"($config.NODE_VERSION)"
+      choco install nodejs-lts --version=$"($config.NODE_VERSION)" --force
       node -v
       npm -v
     }
