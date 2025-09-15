@@ -1,3 +1,5 @@
+use std/log
+
 export const box = {
   version: "0.0.1"
 }
@@ -23,8 +25,6 @@ export def "box install" [...packageNames: string] {
     let packages = platform getPackages
     let cmd = $packages | get --optional $packageName
 
-    $cmd | describe
-
     if ($cmd == null) {
       error make -u {
         msg: $"Package '($packageName)' not found."
@@ -32,9 +32,14 @@ export def "box install" [...packageNames: string] {
       }
     }
 
-    print $packageName
-
-    do $cmd $packages
+    try {
+      log info $"Installing '($packageName)'"
+      do $cmd $packages
+      log info $"Package '($packageName)' installed."
+    } catch {|err|
+      print err
+      log error $"Error installing '($packageName)'"
+    }
   }
 }
 

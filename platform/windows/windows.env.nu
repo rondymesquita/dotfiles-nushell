@@ -4,7 +4,6 @@ export def env --env [] {
 		`c:/Program Files/Git/bin/`,
 		`c:/Program Files/nodejs/`
 	])
-
 }
 
 # Enter in sudo mode

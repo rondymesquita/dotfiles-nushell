@@ -1,5 +1,6 @@
 # Load configurations
 source ./util/variables.nu
+use ./util/logger.nu
 
 # Load core
 source ./core/init.nu
