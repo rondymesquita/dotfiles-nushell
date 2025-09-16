@@ -1,9 +1,5 @@
 use std/log
 
-export const box = {
-  version: "0.0.1"
-}
-
 # Main module for using shell and set machine configurations.
 export def box [] {
   help box
@@ -12,6 +8,10 @@ export def box [] {
 # Show help message
 export def "box help" [] {
   help box
+}
+
+export def "box config" [] {
+  # print $box.config
 }
 
 # Install packages

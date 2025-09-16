@@ -1,11 +1,11 @@
 use ../util/fs.nu [safe-create]
-use ../util/variables.nu [config]
+use ../main/variables.nu [config]
 use std/log
 
 module windows {
-  export use ../platform/windows/windows.alias.nu *
-  export use ../platform/windows/windows.env.nu *
-  export use ../platform/windows/windows.pkg.nu *
+  export use ../platform/windows/core/windows.alias.nu *
+  export use ../platform/windows/core/windows.env.nu *
+  export use ../platform/windows/core/windows.pkg.nu *
 }
 
 module linux {
@@ -14,6 +14,5 @@ module linux {
 
 # Enable platform
 overlay use $config.OS --prefix as platform
-
 platform alias
 platform env

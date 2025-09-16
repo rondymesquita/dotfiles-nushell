@@ -6,7 +6,7 @@ export def getPackages [] {
 
     },
     fonts: {||
-      http get https://github.com/subframe7536/maple-font/releases/download/v7.7/MapleMonoNormal-TTF.zip | save $"($config.DOWNLOADS)/MapleMonoNormal-TTF.zip"
+      # http get https://github.com/subframe7536/maple-font/releases/download/v7.7/MapleMonoNormal-TTF.zip | save $"($config.DOWNLOADS)/MapleMonoNormal-TTF.zip"
     },
     python: { ||
         print "instalando python..."
@@ -20,7 +20,7 @@ export def getPackages [] {
       powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
     },
     node: { ||
-      choco install nodejs-lts --version=$"($config.NODE_VERSION)" --force
+      # choco install nodejs-lts --version=$"($config.NODE_VERSION)" --force
       node -v
       npm -v
     }
