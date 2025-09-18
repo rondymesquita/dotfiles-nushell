@@ -22,7 +22,7 @@ export def "box install" [...packageNames: string] {
   }
 
   for $packageName in $packageNames {
-    let packages = platform getPackages
+    let packages = $env.box.packages
     let cmd = $packages | get --optional $packageName
 
     if ($cmd == null) {
@@ -45,11 +45,11 @@ export def "box install" [...packageNames: string] {
 
 # List packages available for installation
 export def "box list" [] {
-  let packages = platform getPackages
+  let packages = $env.box.packages
   $packages | columns
 }
 
 # Enter in sudo mode
 export def "box sudo" [] {
-	platform sudo
+	do $env.box.cmd.sudo
 }

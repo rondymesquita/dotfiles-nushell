@@ -1,3 +1,1 @@
-export def alias --env [] {
-
-}
+export alias hello-windows = print "Hello from Windows!"

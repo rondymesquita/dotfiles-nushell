@@ -1,15 +1,8 @@
-export def env --env [] {
-
+export-env {
 	$env.PATH = ($env.PATH | prepend [
-		`c:/Program Files/Git/bin/`,
-		`c:/Program Files/nodejs/`
+		`c:/Program Files/Git/bin/`
+		`C:\Program Files\nodejs\node.exe`
+		$'C:\Users\($config.USER)\AppData\Local\Programs\Python\Python313\Scripts\'
+		$'C:\Users\($config.USER)\AppData\Local\Programs\Python\Python313\'
 	])
-}
-
-# Enter in sudo mode
-export def sudo [] {
-	# https://learn.microsoft.com/en-us/windows/advanced-settings/sudo/
-	# sudo config --enable normal
-
-  ^sudo -E nu
 }

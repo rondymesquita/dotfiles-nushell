@@ -1,6 +1,3 @@
-# Initialize all global settings
-source ./init.nu
-
 # Load variables and secrets
 source ./variables.nu
 source ./secrets.nu
@@ -17,5 +14,3 @@ source ../core/theme.nu
 source ../cmd/git.nu
 source ../cmd/amy.nu
 source ../cmd/box.nu
-
-# Configure box with variables

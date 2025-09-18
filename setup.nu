@@ -1,7 +1,11 @@
 use ./util/fs.nu [safe-create]
-use ./variables.nu [config]
+use ./scripts/main/variables.nu [config]
 
-safe-create $"($nu.default-config-dir)/box/credentials.nu"
+let ROOT = $nu.default-config-dir
+
+safe-create $"($ROOT)/scripts/main/secrets.nu"
 
 mkdir $config.DOWNLOADS
 mkdir $config.RESOURCES
+mkdir $config.LIB
+mkdir $config.BIN

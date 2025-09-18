@@ -1,9 +1,14 @@
-# Path
-# $env.PATH = ($env.PATH | prepend `c:/Program Files/Git/bin/`)
-# $env.PATH = ($env.PATH | prepend `C:\Program Files\nodejs\node.exe`)
+# use ../main/variables.nu
+
+$env.PATH = ($env.PATH | prepend [
+	$'($config.ROOT)/bin'
+])
 
 # Set library folder
-$env.NU_LIB_DIRS = ["~/.nu"]
+$env.NU_LIB_DIRS = [
+	"~/.nu",
+	$'($config.ROOT)/lib'
+]
 
 # Configurations
 $env.config.buffer_editor = "code"
