@@ -10,10 +10,6 @@ export def "box help" [] {
   help box
 }
 
-export def "box config" [] {
-  # print $box.config
-}
-
 # Install packages
 export def "box install" [...packageNames: string] {
 
@@ -37,7 +33,7 @@ export def "box install" [...packageNames: string] {
       do $cmd $packages
       log info $"Package '($packageName)' installed."
     } catch {|err|
-      print err
+      print $err.rendered
       log error $"Error installing '($packageName)'"
     }
   }

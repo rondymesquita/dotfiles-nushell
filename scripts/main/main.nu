@@ -10,7 +10,6 @@ source ../core/platform.nu
 source ../core/prompt.nu
 source ../core/theme.nu
 
-# load custom commands
-source ../cmd/git.nu
-source ../cmd/amy.nu
-source ../cmd/box.nu
+# load custom commands line interface
+source ../cli/amy.nu
+source ../cli/box.nu

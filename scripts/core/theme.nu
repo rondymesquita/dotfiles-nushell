@@ -44,7 +44,3 @@ let theme = {
 
 # $env.config.animate_prompt = false
 $env.config.color_config = $theme # <-- this is the theme
-$env.config.edit_mode = "emacs" # vi
-$env.config.footer_mode = "always" #always, never, number_of_rows, auto
-$env.config.table.mode = "compact";
-$env.config.use_ansi_coloring = true

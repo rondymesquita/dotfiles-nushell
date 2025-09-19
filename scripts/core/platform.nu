@@ -1,4 +1,3 @@
-use ../util/fs.nu [safe-create]
 use std/log
 
 module windows {
@@ -10,5 +9,8 @@ module windows {
   export use ../platform/windows/core/windows.alias.nu *
 }
 
-# Enable platform
-overlay use $config.OS
+module linux {
+
+}
+
+overlay use $config.PLATFORM
