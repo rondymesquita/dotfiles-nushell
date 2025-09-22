@@ -19,9 +19,9 @@ export def "box install" [...packageNames: string] {
 
   for $packageName in $packageNames {
     let packages = $env.box.packages
-    let cmd = $packages | get --optional $packageName
+    let closure = $packages | get --optional $packageName
 
-    if ($cmd == null) {
+    if ($closure == null) {
       error make -u {
         msg: $"Package '($packageName)' not found."
         help: "Run 'box list' to see available packages."
@@ -30,7 +30,7 @@ export def "box install" [...packageNames: string] {
 
     try {
       log info $"Installing '($packageName)'"
-      do $cmd $packages
+      do $closure $packages
       log info $"Package '($packageName)' installed."
     } catch {|err|
       print $err.rendered
@@ -46,6 +46,6 @@ export def "box list" [] {
 }
 
 # Enter in sudo mode
-export def "box sudo" [] {
-	do $env.box.cmd.sudo
+export def "box sudo" [...packageNames: string] {
+  do $env.box.cmd.sudo
 }

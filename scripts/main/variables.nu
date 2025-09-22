@@ -9,7 +9,6 @@ export const config = {
 	BIN: "./bin",
 }
 
-
 export-env {
 	$env.box = {}
 }
