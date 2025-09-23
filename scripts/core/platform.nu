@@ -9,8 +9,6 @@ module windows {
   export use ../platform/windows/core/windows.alias.nu *
 }
 
-module linux {
-
+export-env {
+  source $"($nu.default-config-dir)/scripts/platform/ubuntu.nu"
 }
-
-overlay use $config.PLATFORM

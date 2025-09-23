@@ -12,5 +12,5 @@ export alias gs = ^git status
 export alias gb = ^git branch
 
 export def hello-world [] {
-		print $"Hello ($config.USER)"
+		print $"Hello ($env.box-config.USER)"
 }

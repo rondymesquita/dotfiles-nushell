@@ -13,8 +13,15 @@ git reset --hard origin/main
 
 ### Linux
 
-```
+```bash
 curl -L https://github.com/nushell/nushell/releases/download/0.107.0/nu-0.107.0-x86_64-unknown-linux-gnu.tar.gz --output nushell.tar.gz
 
 tar -xvf nushell.tar.gz
+```
+
+Add to .bashrc
+```bash
+if command -v nu >/dev/null 2>&1; then
+    exec nu
+fi
 ```

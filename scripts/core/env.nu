@@ -1,13 +1,13 @@
 # use ../main/variables.nu
 
 $env.PATH = ($env.PATH | prepend [
-	$'($config.ROOT)/bin'
+	$'($env.box-config.ROOT)/bin'
 ])
 
 # Set library folder
 $env.NU_LIB_DIRS = [
 	"~/.nu",
-	$'($config.ROOT)/lib'
+	$'($env.box-config.ROOT)/lib'
 ]
 
 # Configurations

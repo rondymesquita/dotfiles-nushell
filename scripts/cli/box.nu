@@ -1,5 +1,14 @@
 use std/log
 
+export def get-packages [] {
+  ls $"($nu.default-config-dir)/scripts/platform/($env.box-config.PLATFORM)/" | get name | path basename | str replace ".sh" ""
+}
+
+export def run-bash [file: string] {
+  let path = $"($nu.default-config-dir)/scripts/platform/($env.box-config.PLATFORM)/($file).sh"
+  open $path | with-env { USER: $env.box-config.USER } { bash -c $in }
+}
+
 # Main module for using shell and set machine configurations.
 export def box [] {
   help box
@@ -18,10 +27,10 @@ export def "box install" [...packageNames: string] {
   }
 
   for $packageName in $packageNames {
-    let packages = $env.box.packages
-    let closure = $packages | get --optional $packageName
+    let packages = get-packages
+    let name = $packages | where {$in == $packageName} | get --optional 0
 
-    if ($closure == null) {
+    if ($name == null) {
       error make -u {
         msg: $"Package '($packageName)' not found."
         help: "Run 'box list' to see available packages."
@@ -30,7 +39,7 @@ export def "box install" [...packageNames: string] {
 
     try {
       log info $"Installing '($packageName)'"
-      do $closure $packages
+      run-bash $name
       log info $"Package '($packageName)' installed."
     } catch {|err|
       print $err.rendered
@@ -41,8 +50,8 @@ export def "box install" [...packageNames: string] {
 
 # List packages available for installation
 export def "box list" [] {
-  let packages = $env.box.packages
-  $packages | columns
+  let packages = get-packages
+  print $packages
 }
 
 # Enter in sudo mode
