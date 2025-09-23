@@ -9,6 +9,5 @@ module windows {
   export use ../platform/windows/core/windows.alias.nu *
 }
 
-export-env {
-  source $"($nu.default-config-dir)/scripts/platform/ubuntu.nu"
-}
+source $"($nu.default-config-dir)/scripts/platform/($config.PLATFORM).nu"
+export use ../scripts/platform/($config.PLATFORM).nu *

@@ -1,7 +1,7 @@
 export def hello-ubuntu [] { print "Hello from ubuntu!" }
+export alias hello-linux = print "Hello from Linux!"
 
 export-env {
-	export def hello-ubuntu2 [] { print "Hello from ubuntu!" }
 
 	$env.PATH = ($env.PATH | prepend [
 		"meu-ubuntu"

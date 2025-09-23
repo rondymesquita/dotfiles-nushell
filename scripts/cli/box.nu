@@ -1,12 +1,12 @@
 use std/log
 
 export def get-packages [] {
-  ls $"($nu.default-config-dir)/scripts/platform/($env.box-config.PLATFORM)/" | get name | path basename | str replace ".sh" ""
+  ls $"($nu.default-config-dir)/scripts/platform/($config.PLATFORM)/" | get name | path basename | str replace ".sh" ""
 }
 
 export def run-bash [file: string] {
-  let path = $"($nu.default-config-dir)/scripts/platform/($env.box-config.PLATFORM)/($file).sh"
-  open $path | with-env { USER: $env.box-config.USER } { bash -c $in }
+  let path = $"($nu.default-config-dir)/scripts/platform/($config.PLATFORM)/($file).sh"
+  open $path | with-env { USER: $config.USER } { bash -c $in }
 }
 
 # Main module for using shell and set machine configurations.
