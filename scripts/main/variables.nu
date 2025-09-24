@@ -9,10 +9,4 @@ export const config = {
 	BIN: "./bin",
 }
 
-print $config
-
-# mut fulano = {
-# 	sicrano: $"(sys host | get name | str downcase)"
-# }
-
-# $config.PLATFORM = $"(sys host | get name | str downcase)"
+# (source variable.template.nu) | into record | to nuon --indent 2 | to text | prepend "export const config = " | str join "" | save temp.nu -f

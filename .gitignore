@@ -1,6 +1,7 @@
 history.txt
 **/credentials.nu
 **/secrets.nu
+**/core/custom.nu
 resources/
 downloads/
 lib/

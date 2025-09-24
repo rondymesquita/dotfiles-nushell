@@ -4,7 +4,7 @@ export alias hello-linux = print "Hello from Linux!"
 export-env {
 
 	$env.PATH = ($env.PATH | prepend [
-		"meu-ubuntu"
+		"meu-ubuntu",
 	])
 
 	$env.box.cmd = {

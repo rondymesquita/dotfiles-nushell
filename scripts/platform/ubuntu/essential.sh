@@ -5,4 +5,5 @@ sudo apt-get install -y \
 	apt-transport-https \
 	ca-certificates \
 	gnupg \
-	curl
+	curl \
+	build-essential
