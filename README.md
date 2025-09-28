@@ -22,6 +22,7 @@ tar -xvf nushell.tar.gz
 Add to .bashrc
 ```bash
 if command -v nu >/dev/null 2>&1; then
+    source "$HOME/.config/nushell/bash.sh"
     exec nu
 fi
 ```
