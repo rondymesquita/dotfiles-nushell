@@ -1,4 +1,4 @@
-use ./util/fs.nu [safe-create]
+use ./src/util/fs.nu [safe-create]
 use ./src/main/variables.nu [config]
 
 let ROOT = $nu.default-config-dir
