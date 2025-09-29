@@ -18,8 +18,15 @@ def parse_format [format: string] {
     if ($format | str contains "{indicator}") {
         $prompt = $prompt | str replace "{indicator}" (get_indicator)
     }
+    if ($format | str contains "{platform}") {
+        $prompt = $prompt | str replace "{platform}" (get_platform)
+    }
 
     print $prompt
+}
+
+def get_platform [] {
+    return $"(ansi $colors.base04)(sys host | get name | str downcase)(ansi reset)"
 }
 
 def get_git_branch [] {
@@ -48,7 +55,7 @@ def get_pwd [] {
 }
 
 def create_prompt [] {
-    let prompt = parse_format "{cwd} {indicator}"
+    let prompt = parse_format "[{platform}] {cwd} {indicator}"
     return $prompt
 }
 
