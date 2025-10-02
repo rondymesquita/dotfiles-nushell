@@ -5,7 +5,7 @@ export-env {
         do $this.fonts
       },
       fonts: {||
-        http get https://github.com/subframe7536/maple-font/releases/download/v7.7/MapleMonoNormal-TTF.zip | save -p $"($config.DOWNLOADS)/MapleMonoNormal-TTF.zip"
+        http get https://github.com/subframe7536/maple-font/releases/download/v7.7/MapleMonoNormal-TTF.zip | save -p $"($env.box.config.DOWNLOADS)/MapleMonoNormal-TTF.zip"
       },
       python: { ||
           print "instalando python..."
@@ -19,7 +19,7 @@ export-env {
         powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
       },
       node: { ||
-        choco install nodejs-lts --version=$"($config.NODE_VERSION)" --force
+        choco install nodejs-lts --version=$"($env.box.config.NODE_VERSION)" --force
         node -v
         npm -v
       }

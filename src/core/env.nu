@@ -1,6 +1,6 @@
 # use ../main/variables.nu
 
-const root = $config.ROOT
+let root = $env.box.config.ROOT
 
 $env.PATH = ($env.PATH | prepend [
 	$'($root)/bin'
@@ -35,5 +35,5 @@ export alias gs = ^git status
 export alias gb = ^git branch
 
 export def hello-world [] {
-		print $"Hello ($config.USER)"
+		print $"Hello ($env.box.config.USER)"
 }

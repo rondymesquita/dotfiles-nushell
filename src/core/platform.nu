@@ -9,5 +9,5 @@ module windows {
   export use ../platform/windows/core/windows.alias.nu *
 }
 
-source $"../platform/($config.PLATFORM).nu"
-export use ../platform/($config.PLATFORM).nu *
+source $"../platform/ubuntu.nu"
+export use ../platform/ubuntu.nu *

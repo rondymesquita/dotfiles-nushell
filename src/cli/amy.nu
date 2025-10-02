@@ -34,7 +34,7 @@ export def "amy add" [path: string] {
     # let name = $path | path basename
     # let meta = $path | path expand | path parse
     # let sourceFolder = $meta.parent | str replace $"($meta.prefix)" ""
-    # let destinationFolder = $"($config.ROOT)/($OUTPUT_FOLDER)/($OS)/($sourceFolder)"
+    # let destinationFolder = $"($env.box.config.ROOT)/($OUTPUT_FOLDER)/($OS)/($sourceFolder)"
     # let id = $"($sourceFolder)-($name)"
     # let record = {
     #     id: $id

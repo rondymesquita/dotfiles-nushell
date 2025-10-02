@@ -1,12 +1,18 @@
 use std/log
 
 export def get-packages [] {
-  ls $"($nu.default-config-dir)/scripts/platform/($config.PLATFORM)/" | get name | path basename | str replace ".sh" ""
+  ls $"($nu.default-config-dir)/src/platform/($env.box.config.PLATFORM)/" | get name | path basename | split column "." | rename name ext
 }
 
 export def run-bash [file: string] {
-  let path = $"($nu.default-config-dir)/scripts/platform/($config.PLATFORM)/($file).sh"
-  open $path | with-env { USER: $config.USER } { bash -c $in }
+  let path = $"($nu.default-config-dir)/src/platform/($env.box.config.PLATFORM)/($file).sh"
+  open $path | with-env { USER: $env.box.config.USER } { bash -c $in }
+}
+export def run-nu [file: string] {
+  let path = $"($nu.default-config-dir)/src/platform/($env.box.config.PLATFORM)/($file).nu"
+  open $path | do {
+    nu -c $in --config $nu.config-path
+  }
 }
 
 # Main module for using shell and set machine configurations.
@@ -28,9 +34,9 @@ export def "box install" [...packageNames: string] {
 
   for $packageName in $packageNames {
     let packages = get-packages
-    let name = $packages | where {$in == $packageName} | get --optional 0
+    let package = $packages | where {$in.name == $packageName} | get --optional 0
 
-    if ($name == null) {
+    if ($package == null) {
       error make -u {
         msg: $"Package '($packageName)' not found."
         help: "Run 'box list' to see available packages."
@@ -39,7 +45,11 @@ export def "box install" [...packageNames: string] {
 
     try {
       log info $"Installing '($packageName)'"
-      run-bash $name
+      if ($package.ext == "nu") {
+        run-nu $package.name
+      } else if ($package.ext == "sh") {
+        run-bash $package.name
+      }
       log info $"Package '($packageName)' installed."
     } catch {|err|
       print $err.rendered
@@ -52,9 +62,4 @@ export def "box install" [...packageNames: string] {
 export def "box list" [] {
   let packages = get-packages
   print $packages
-}
-
-# Enter in sudo mode
-export def "box sudo" [...packageNames: string] {
-  do $env.box.cmd.sudo
 }
