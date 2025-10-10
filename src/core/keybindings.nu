@@ -1,6 +1,6 @@
 $env.config.keybindings = [{
   name: "replace_slash_line_break_and_run"
-	modifier: "none"
+	modifier: "control"
 	keycode: "enter"
 	mode: "emacs"
   event: [
